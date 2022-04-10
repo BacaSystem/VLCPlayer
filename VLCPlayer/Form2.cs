@@ -17,13 +17,13 @@ namespace VLCPlayer
             InitializeComponent();
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void cascadeToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if (textBox1.Text.Any())
-            {
-                (Application.OpenForms["Form1"] as Form1).PlayURI(textBox1.Text);
-                this.Close();
-            }
+            var form1 = new Form1();
+            form1.Location = this.Location;
+            form1.StartPosition = FormStartPosition.Manual;
+            form1.Show();
+            this.Hide();
         }
     }
 }
