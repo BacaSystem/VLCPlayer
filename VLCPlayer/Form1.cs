@@ -19,6 +19,13 @@ namespace VLCPlayer
     public partial class Form1 : Form
     {
         const string VIDEO_URL = "tcp://127.0.0.1:333";
+
+        const string TCP_URL = "tcp://127.0.0.1:3333";
+        const string UDP_URL = "udp://@127.0.0.1:3333?pkt_size=1024";
+        const string RTP_URL = "C:\\Work\\Studia\\inz\\Server\\video.sdp";
+        const string RTMP_URL = "rtmp://127.0.0.1:1935";
+        const string HLS_URL = "";
+
         LibVLC _libVLC;
         MediaPlayer _mp, _mp2, _mp3, _mp4, _mp5, _mp6, _mp7, _mp8, _mp9;
         TextBox _txt1, _txt2, _txt3, _txt4, _txt5, _txt6, _txt7, _txt8, _txt9;
@@ -37,7 +44,7 @@ namespace VLCPlayer
             Core.Initialize();
             this.KeyPreview = true;
 
-            startTimer.Interval = 10000;
+            startTimer.Interval = 1000;
             startTimer.Tick += new EventHandler(StartTimerTick);
             playTimer.Interval = 1000;
             playTimer.Tick += new EventHandler(PlayTimerTick);
@@ -88,7 +95,7 @@ namespace VLCPlayer
             //_mp.Play(new Media(_libVLC, new Uri("http://localhost:8888/stream/index.m3u8")));
 
             startTimer.Start();
-           // PlayURI("rtsp://localhost:8554");
+            //PlayURI("rtp://127.0.0.1:5004");
             //PlayURI("udp://@127.0.0.1:1234");
             //PlayURI("http://localhost:8080");
             //PlayStream(VIDEO_URL);
@@ -106,13 +113,14 @@ namespace VLCPlayer
                 w.WriteLine($"{TimeSpan.FromMilliseconds(_mp.Time)}");
                 w.WriteLine($"{_mp.Media.Statistics.InputBitrate}");
                 w.WriteLine($"{_mp.Media.Statistics.ReadBytes} ");
+                //w.WriteLine($"{_mp.Media.Statistics.}");
             }
         }
 
         void StartTimerTick(object sender, EventArgs e)
         {
             if(_mp.State != VLCState.Opening && _mp.State != VLCState.Playing)
-                PlayURI("http://localhost:8080");
+                PlayURI("rtmp://127.0.0.1:1935");
             System.Console.WriteLine("TIMER: " + DateTime.Now.TimeOfDay);
             System.Console.WriteLine("STATE: " + _mp.State);
             System.Console.WriteLine(_mp.Time);
@@ -143,14 +151,14 @@ namespace VLCPlayer
         bool PlayURI(string file)
         {
             bool play = _mp.Play(new Media(_libVLC, new Uri(file)));
-            _mp2.Play(new Media(_libVLC, new Uri(file)));
-            _mp3.Play(new Media(_libVLC, new Uri(file)));
-            _mp4.Play(new Media(_libVLC, new Uri(file)));
-            _mp5.Play(new Media(_libVLC, new Uri(file)));
-            _mp6.Play(new Media(_libVLC, new Uri(file)));
-            _mp7.Play(new Media(_libVLC, new Uri(file)));
-            _mp8.Play(new Media(_libVLC, new Uri(file)));
-            _mp9.Play(new Media(_libVLC, new Uri(file)));
+            //_mp2.Play(new Media(_libVLC, new Uri(file)));
+            //_mp3.Play(new Media(_libVLC, new Uri(file)));
+            //_mp4.Play(new Media(_libVLC, new Uri(file)));
+            //_mp5.Play(new Media(_libVLC, new Uri(file)));
+            //_mp6.Play(new Media(_libVLC, new Uri(file)));
+            //_mp7.Play(new Media(_libVLC, new Uri(file)));
+            //_mp8.Play(new Media(_libVLC, new Uri(file)));
+            //_mp9.Play(new Media(_libVLC, new Uri(file)));
             return play;
         }
 

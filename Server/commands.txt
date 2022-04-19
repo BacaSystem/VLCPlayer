@@ -1,0 +1,16 @@
+TCP
+ffmpeg -re -fflags +genpts -i video.mp4 -an -f mpegts tcp://127.0.0.1:3333?listen
+
+UDP
+ffmpeg -re -i video.mp4 -an -f mpegts -flush_packets 0 udp://127.0.0.1:3333?pkt_size=1024
+
+RTP
+ffmpeg -re -fflags +genpts -i video.mp4 -an -f rtp -sdp_file video.sdp rtp://127.0.0.1:3333
+--------------ffmpeg -re -fflags +genpts -i video.mp4 -an -f rtp rtsp://127.0.0.1/video.sdp
+
+RTMP
+ffmpeg -re -fflags +genpts -i video.mp4 -an -f flv -listen 1 rtmp://127.0.0.1:3333
+
+SRT
+ffmpeg -re -fflags +genpts -i video.mp4 -an -f mpegts srt://127.0.0.1:3333?mode=listener
+

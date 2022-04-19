@@ -30,16 +30,22 @@ namespace VLCPlayer
         private void InitializeComponent()
         {
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
+            this.viewToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.fullToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.tCPToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.uDPToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.rTPToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.rTMPToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.hLSToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.cascadeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.tCPToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.uDPToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.rTPToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.rTMPToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.sRTToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.videoView1 = new LibVLCSharp.WinForms.VideoView();
-            this.viewToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.cascadeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.fullToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.tCPToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.uDPToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.tCPToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.uDPToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.videoView1)).BeginInit();
@@ -54,6 +60,104 @@ namespace VLCPlayer
             this.menuStrip1.Size = new System.Drawing.Size(800, 24);
             this.menuStrip1.TabIndex = 0;
             this.menuStrip1.Text = "menuStrip1";
+            // 
+            // viewToolStripMenuItem
+            // 
+            this.viewToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.fullToolStripMenuItem,
+            this.cascadeToolStripMenuItem});
+            this.viewToolStripMenuItem.Name = "viewToolStripMenuItem";
+            this.viewToolStripMenuItem.Size = new System.Drawing.Size(44, 20);
+            this.viewToolStripMenuItem.Text = "View";
+            // 
+            // fullToolStripMenuItem
+            // 
+            this.fullToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.tCPToolStripMenuItem1,
+            this.uDPToolStripMenuItem1,
+            this.rTPToolStripMenuItem,
+            this.rTMPToolStripMenuItem,
+            this.hLSToolStripMenuItem});
+            this.fullToolStripMenuItem.Name = "fullToolStripMenuItem";
+            this.fullToolStripMenuItem.Size = new System.Drawing.Size(118, 22);
+            this.fullToolStripMenuItem.Text = "Full";
+            // 
+            // tCPToolStripMenuItem1
+            // 
+            this.tCPToolStripMenuItem1.Name = "tCPToolStripMenuItem1";
+            this.tCPToolStripMenuItem1.Size = new System.Drawing.Size(104, 22);
+            this.tCPToolStripMenuItem1.Text = "TCP";
+            this.tCPToolStripMenuItem1.Click += new System.EventHandler(this.tCPToolStripMenuItem1_Click);
+            // 
+            // uDPToolStripMenuItem1
+            // 
+            this.uDPToolStripMenuItem1.Name = "uDPToolStripMenuItem1";
+            this.uDPToolStripMenuItem1.Size = new System.Drawing.Size(104, 22);
+            this.uDPToolStripMenuItem1.Text = "UDP";
+            this.uDPToolStripMenuItem1.Click += new System.EventHandler(this.uDPToolStripMenuItem1_Click);
+            // 
+            // rTPToolStripMenuItem
+            // 
+            this.rTPToolStripMenuItem.Name = "rTPToolStripMenuItem";
+            this.rTPToolStripMenuItem.Size = new System.Drawing.Size(104, 22);
+            this.rTPToolStripMenuItem.Text = "RTP";
+            this.rTPToolStripMenuItem.Click += new System.EventHandler(this.rTPToolStripMenuItem_Click);
+            // 
+            // rTMPToolStripMenuItem
+            // 
+            this.rTMPToolStripMenuItem.Name = "rTMPToolStripMenuItem";
+            this.rTMPToolStripMenuItem.Size = new System.Drawing.Size(104, 22);
+            this.rTMPToolStripMenuItem.Text = "RTMP";
+            this.rTMPToolStripMenuItem.Click += new System.EventHandler(this.rTMPToolStripMenuItem_Click);
+            // 
+            // hLSToolStripMenuItem
+            // 
+            this.hLSToolStripMenuItem.Name = "hLSToolStripMenuItem";
+            this.hLSToolStripMenuItem.Size = new System.Drawing.Size(104, 22);
+            this.hLSToolStripMenuItem.Text = "SRT";
+            this.hLSToolStripMenuItem.Click += new System.EventHandler(this.hLSToolStripMenuItem_Click);
+            // 
+            // cascadeToolStripMenuItem
+            // 
+            this.cascadeToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.tCPToolStripMenuItem,
+            this.uDPToolStripMenuItem,
+            this.rTPToolStripMenuItem1,
+            this.rTMPToolStripMenuItem1,
+            this.sRTToolStripMenuItem});
+            this.cascadeToolStripMenuItem.Name = "cascadeToolStripMenuItem";
+            this.cascadeToolStripMenuItem.Size = new System.Drawing.Size(118, 22);
+            this.cascadeToolStripMenuItem.Text = "Cascade";
+            // 
+            // tCPToolStripMenuItem
+            // 
+            this.tCPToolStripMenuItem.Name = "tCPToolStripMenuItem";
+            this.tCPToolStripMenuItem.Size = new System.Drawing.Size(104, 22);
+            this.tCPToolStripMenuItem.Text = "TCP";
+            // 
+            // uDPToolStripMenuItem
+            // 
+            this.uDPToolStripMenuItem.Name = "uDPToolStripMenuItem";
+            this.uDPToolStripMenuItem.Size = new System.Drawing.Size(104, 22);
+            this.uDPToolStripMenuItem.Text = "UDP";
+            // 
+            // rTPToolStripMenuItem1
+            // 
+            this.rTPToolStripMenuItem1.Name = "rTPToolStripMenuItem1";
+            this.rTPToolStripMenuItem1.Size = new System.Drawing.Size(104, 22);
+            this.rTPToolStripMenuItem1.Text = "RTP";
+            // 
+            // rTMPToolStripMenuItem1
+            // 
+            this.rTMPToolStripMenuItem1.Name = "rTMPToolStripMenuItem1";
+            this.rTMPToolStripMenuItem1.Size = new System.Drawing.Size(104, 22);
+            this.rTMPToolStripMenuItem1.Text = "RTMP";
+            // 
+            // sRTToolStripMenuItem
+            // 
+            this.sRTToolStripMenuItem.Name = "sRTToolStripMenuItem";
+            this.sRTToolStripMenuItem.Size = new System.Drawing.Size(104, 22);
+            this.sRTToolStripMenuItem.Text = "SRT";
             // 
             // tableLayoutPanel1
             // 
@@ -93,58 +197,6 @@ namespace VLCPlayer
             this.videoView1.TabIndex = 1;
             this.videoView1.Text = "videoView1";
             // 
-            // viewToolStripMenuItem
-            // 
-            this.viewToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.cascadeToolStripMenuItem,
-            this.fullToolStripMenuItem});
-            this.viewToolStripMenuItem.Name = "viewToolStripMenuItem";
-            this.viewToolStripMenuItem.Size = new System.Drawing.Size(44, 20);
-            this.viewToolStripMenuItem.Text = "View";
-            // 
-            // cascadeToolStripMenuItem
-            // 
-            this.cascadeToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.tCPToolStripMenuItem,
-            this.uDPToolStripMenuItem});
-            this.cascadeToolStripMenuItem.Name = "cascadeToolStripMenuItem";
-            this.cascadeToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.cascadeToolStripMenuItem.Text = "Cascade";
-            this.cascadeToolStripMenuItem.Click += new System.EventHandler(this.cascadeToolStripMenuItem_Click);
-            // 
-            // fullToolStripMenuItem
-            // 
-            this.fullToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.tCPToolStripMenuItem1,
-            this.uDPToolStripMenuItem1});
-            this.fullToolStripMenuItem.Name = "fullToolStripMenuItem";
-            this.fullToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.fullToolStripMenuItem.Text = "Full";
-            // 
-            // tCPToolStripMenuItem
-            // 
-            this.tCPToolStripMenuItem.Name = "tCPToolStripMenuItem";
-            this.tCPToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.tCPToolStripMenuItem.Text = "TCP";
-            // 
-            // uDPToolStripMenuItem
-            // 
-            this.uDPToolStripMenuItem.Name = "uDPToolStripMenuItem";
-            this.uDPToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.uDPToolStripMenuItem.Text = "UDP";
-            // 
-            // tCPToolStripMenuItem1
-            // 
-            this.tCPToolStripMenuItem1.Name = "tCPToolStripMenuItem1";
-            this.tCPToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
-            this.tCPToolStripMenuItem1.Text = "TCP";
-            // 
-            // uDPToolStripMenuItem1
-            // 
-            this.uDPToolStripMenuItem1.Name = "uDPToolStripMenuItem1";
-            this.uDPToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
-            this.uDPToolStripMenuItem1.Text = "UDP";
-            // 
             // Form2
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -178,5 +230,11 @@ namespace VLCPlayer
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
         private System.Windows.Forms.TextBox textBox1;
         private LibVLCSharp.WinForms.VideoView videoView1;
+        private System.Windows.Forms.ToolStripMenuItem rTPToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem rTMPToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem hLSToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem rTPToolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem rTMPToolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem sRTToolStripMenuItem;
     }
 }

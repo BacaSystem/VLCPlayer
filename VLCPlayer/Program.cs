@@ -7,6 +7,8 @@ using System.Net;
 
 namespace VLCPlayer
 {
+    public enum protocol { tpc, udp, rtp, rtmp, srt, none };
+
     static class Program
     { 
         /// <summary>
