@@ -26,7 +26,7 @@ def write(arg):
             print ("Invalid Protocol: " + arg)
             return
     
-    data = pd.read_excel(path, prot + '_Full_9x9')
+    data = pd.read_excel(path, prot + '_Cascade')
     df = pd.DataFrame(data, columns= ['Godzina_s', 'Godzina_k', 'Czas_s', 'Czas_k'])[:1195]
 
     s_i = []

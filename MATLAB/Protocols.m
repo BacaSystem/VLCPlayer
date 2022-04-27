@@ -1,13 +1,13 @@
 subplot(1,2,1)
-plot(x_tcp, y_avg_tcp, 'b');
+plot(x_tcp_cascade, y_avg_tcp_cascade, 'b');
 hold on
-plot(x_udp, y_avg_udp, 'r');
+plot(x_udp_cascade, y_avg_udp_cascade, 'r');
 hold on
-plot(x_rtsp, y_avg_rtsp, 'm');
+plot(x_rtsp_cascade, y_avg_rtsp_cascade, 'm');
 hold on
-plot(x_srt, y_avg_srt, 'k');
+plot(x_srt_cascade, y_avg_srt_cascade, 'k');
 hold on
-plot(x_rtmp, y_avg_rtmp, 'g');
+plot(x_rtmp_cascade, y_avg_rtmp_cascade, 'g');
 
 xlabel('Stream time [min]');
 ylabel('Delay [ms]');

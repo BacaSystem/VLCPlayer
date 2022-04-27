@@ -69,7 +69,7 @@ namespace VLCPlayer
             switch (protocol)
             {
                 case protocol.tpc:
-                    using (StreamWriter w = File.AppendText(path + "TCP_Client_LOG.txt"))
+                    using (StreamWriter w = File.AppendText(path + "TCP\\TCP_Client_LOG.txt"))
                     {
                         w.WriteLine($"{DateTime.Now.ToString("HH:mm:ss.ff")}");
                         w.WriteLine($"{TimeSpan.FromMilliseconds(_mp.Time)}");
@@ -78,7 +78,7 @@ namespace VLCPlayer
                     }
                     break;
                 case protocol.udp:
-                    using (StreamWriter w = File.AppendText(path + "UDP_Client_LOG.txt"))
+                    using (StreamWriter w = File.AppendText(path + "UDP\\UDP_Client_LOG.txt"))
                     {
                         w.WriteLine($"{DateTime.Now.ToString("HH:mm:ss.ff")}");
                         w.WriteLine($"{TimeSpan.FromMilliseconds(_mp.Time)}");
@@ -87,7 +87,7 @@ namespace VLCPlayer
                     }
                     break;
                 case protocol.rtsp:
-                    using (StreamWriter w = File.AppendText(path + "RTSP_Client_LOG.txt"))
+                    using (StreamWriter w = File.AppendText(path + "RTSP\\RTSP_Client_LOG.txt"))
                     {
                         w.WriteLine($"{DateTime.Now.ToString("HH:mm:ss.ff")}");
                         w.WriteLine($"{TimeSpan.FromMilliseconds(_mp.Time)}");
@@ -96,7 +96,7 @@ namespace VLCPlayer
                     }
                     break;
                 case protocol.rtmp:
-                    using (StreamWriter w = File.AppendText(path + "RTMP_Client_LOG.txt"))
+                    using (StreamWriter w = File.AppendText(path + "RTMP\\RTMP_Client_LOG.txt"))
                     {
                         w.WriteLine($"{DateTime.Now.ToString("HH:mm:ss.ff")}");
                         w.WriteLine($"{TimeSpan.FromMilliseconds(_mp.Time)}");
@@ -105,7 +105,7 @@ namespace VLCPlayer
                     }
                     break;
                 case protocol.srt:
-                    using (StreamWriter w = File.AppendText(path + "SRT_Client_LOG.txt"))
+                    using (StreamWriter w = File.AppendText(path + "SRT\\SRT_Client_LOG.txt"))
                     {
                         w.WriteLine($"{DateTime.Now.ToString("HH:mm:ss.ff")}");
                         w.WriteLine($"{TimeSpan.FromMilliseconds(_mp.Time)}");
@@ -187,7 +187,7 @@ namespace VLCPlayer
                 videoView1.MediaPlayer = _mp;
             }
 
-            using (StreamWriter w = File.CreateText(path + "TCP_Client_LOG.txt"))
+            using (StreamWriter w = File.CreateText(path + "TCP\\TCP_Client_LOG.txt"))
                 w.WriteLine("");
 
             startTimer.Start();
@@ -208,7 +208,7 @@ namespace VLCPlayer
                 videoView1.MediaPlayer = _mp;
             }
 
-            using (StreamWriter w = File.CreateText(path + "UDP_Client_LOG.txt"))
+            using (StreamWriter w = File.CreateText(path + "UDP\\UDP_Client_LOG.txt"))
                 w.WriteLine("");
 
             startTimer.Start();
@@ -229,7 +229,7 @@ namespace VLCPlayer
                 videoView1.MediaPlayer = _mp;
             }
 
-            using (StreamWriter w = File.CreateText(path + "RTMP_Client_LOG.txt"))
+            using (StreamWriter w = File.CreateText(path + "RTMP\\RTMP_Client_LOG.txt"))
                 w.WriteLine("");
 
             startTimer.Start();
@@ -251,7 +251,7 @@ namespace VLCPlayer
                 videoView1.MediaPlayer = _mp;
             }
 
-            using (StreamWriter w = File.CreateText(path + "RTSP_Client_LOG.txt"))
+            using (StreamWriter w = File.CreateText(path + "RTSP\\RTSP_Client_LOG.txt"))
                 w.WriteLine("");
 
             startTimer.Start();
@@ -272,7 +272,7 @@ namespace VLCPlayer
                 videoView1.MediaPlayer = _mp;
             }
 
-            using (StreamWriter w = File.CreateText(path + "SRT_Client_LOG.txt"))
+            using (StreamWriter w = File.CreateText(path + "SRT\\SRT_Client_LOG.txt"))
                 w.WriteLine("");
 
             startTimer.Start();
