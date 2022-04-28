@@ -63,56 +63,56 @@ namespace VLCPlayer
             if (!_mp.IsPlaying)
                 return;
 
-            switch (protocol)
-            {
-                case protocol.tpc:
-                    using (StreamWriter w = File.AppendText(path + "TCP\\TCP_Client_LOG.txt"))
-                    {
-                        w.WriteLine($"{DateTime.Now.ToString("HH:mm:ss.ff")}");
-                        w.WriteLine($"{TimeSpan.FromMilliseconds(_mp.Time)}");
-                        w.WriteLine($"{_mp.Media.Statistics.InputBitrate * 8000}");
-                        w.WriteLine($"{_mp.Media.Statistics.ReadBytes} ");
-                    }
-                    break;
-                case protocol.udp:
-                    using (StreamWriter w = File.AppendText(path + "UDP\\UDP_Client_LOG.txt"))
-                    {
-                        w.WriteLine($"{DateTime.Now.ToString("HH:mm:ss.ff")}");
-                        w.WriteLine($"{TimeSpan.FromMilliseconds(_mp.Time)}");
-                        w.WriteLine($"{_mp.Media.Statistics.InputBitrate * 8000}");
-                        w.WriteLine($"{_mp.Media.Statistics.ReadBytes} ");
-                    }
-                    break;
-                case protocol.rtsp:
-                    using (StreamWriter w = File.AppendText(path + "RTSP\\RTSP_Client_LOG.txt"))
-                    {
-                        w.WriteLine($"{DateTime.Now.ToString("HH:mm:ss.ff")}");
-                        w.WriteLine($"{TimeSpan.FromMilliseconds(_mp.Time)}");
-                        w.WriteLine($"{_mp.Media.Statistics.InputBitrate * 8000}");
-                        w.WriteLine($"{_mp.Media.Statistics.ReadBytes} ");
-                    }
-                    break;
-                case protocol.rtmp:
-                    using (StreamWriter w = File.AppendText(path + "RTMP\\RTMP_Client_LOG.txt"))
-                    {
-                        w.WriteLine($"{DateTime.Now.ToString("HH:mm:ss.ff")}");
-                        w.WriteLine($"{TimeSpan.FromMilliseconds(_mp.Time)}");
-                        w.WriteLine($"{_mp.Media.Statistics.InputBitrate * 8000}");
-                        w.WriteLine($"{_mp.Media.Statistics.ReadBytes} ");
-                    }
-                    break;
-                case protocol.srt:
-                    using (StreamWriter w = File.AppendText(path + "SRT\\SRT_Client_LOG.txt"))
-                    {
-                        w.WriteLine($"{DateTime.Now.ToString("HH:mm:ss.ff")}");
-                        w.WriteLine($"{TimeSpan.FromMilliseconds(_mp.Time)}");
-                        w.WriteLine($"{_mp.Media.Statistics.InputBitrate * 8000}");
-                        w.WriteLine($"{_mp.Media.Statistics.ReadBytes} ");
-                    }
-                    break;
-                case protocol.none:
-                    break;
-            }
+            //switch (protocol)
+            //{
+            //    case protocol.tpc:
+            //        using (StreamWriter w = File.AppendText(path + "TCP\\TCP_Client_LOG.txt"))
+            //        {
+            //            w.WriteLine($"{DateTime.Now.ToString("HH:mm:ss.ff")}");
+            //            w.WriteLine($"{TimeSpan.FromMilliseconds(_mp.Time)}");
+            //            w.WriteLine($"{_mp.Media.Statistics.InputBitrate * 8000}");
+            //            w.WriteLine($"{_mp.Media.Statistics.ReadBytes} ");
+            //        }
+            //        break;
+            //    case protocol.udp:
+            //        using (StreamWriter w = File.AppendText(path + "UDP\\UDP_Client_LOG.txt"))
+            //        {
+            //            w.WriteLine($"{DateTime.Now.ToString("HH:mm:ss.ff")}");
+            //            w.WriteLine($"{TimeSpan.FromMilliseconds(_mp.Time)}");
+            //            w.WriteLine($"{_mp.Media.Statistics.InputBitrate * 8000}");
+            //            w.WriteLine($"{_mp.Media.Statistics.ReadBytes} ");
+            //        }
+            //        break;
+            //    case protocol.rtsp:
+            //        using (StreamWriter w = File.AppendText(path + "RTSP\\RTSP_Client_LOG.txt"))
+            //        {
+            //            w.WriteLine($"{DateTime.Now.ToString("HH:mm:ss.ff")}");
+            //            w.WriteLine($"{TimeSpan.FromMilliseconds(_mp.Time)}");
+            //            w.WriteLine($"{_mp.Media.Statistics.InputBitrate * 8000}");
+            //            w.WriteLine($"{_mp.Media.Statistics.ReadBytes} ");
+            //        }
+            //        break;
+            //    case protocol.rtmp:
+            //        using (StreamWriter w = File.AppendText(path + "RTMP\\RTMP_Client_LOG.txt"))
+            //        {
+            //            w.WriteLine($"{DateTime.Now.ToString("HH:mm:ss.ff")}");
+            //            w.WriteLine($"{TimeSpan.FromMilliseconds(_mp.Time)}");
+            //            w.WriteLine($"{_mp.Media.Statistics.InputBitrate * 8000}");
+            //            w.WriteLine($"{_mp.Media.Statistics.ReadBytes} ");
+            //        }
+            //        break;
+            //    case protocol.srt:
+            //        using (StreamWriter w = File.AppendText(path + "SRT\\SRT_Client_LOG.txt"))
+            //        {
+            //            w.WriteLine($"{DateTime.Now.ToString("HH:mm:ss.ff")}");
+            //            w.WriteLine($"{TimeSpan.FromMilliseconds(_mp.Time)}");
+            //            w.WriteLine($"{_mp.Media.Statistics.InputBitrate * 8000}");
+            //            w.WriteLine($"{_mp.Media.Statistics.ReadBytes} ");
+            //        }
+            //        break;
+            //    case protocol.none:
+            //        break;
+            //}
 
 
         }
@@ -239,8 +239,8 @@ namespace VLCPlayer
                 LoadView();
             }
 
-            using (StreamWriter w = File.CreateText(path + "TCP\\TCP_Client_LOG.txt"))
-                w.WriteLine("");
+            //using (StreamWriter w = File.CreateText(path + "TCP\\TCP_Client_LOG.txt"))
+            //    w.WriteLine("");
 
             startTimer.Start();
         }
@@ -268,8 +268,8 @@ namespace VLCPlayer
                 LoadView();
             }
 
-            using (StreamWriter w = File.CreateText(path + "UDP\\UDP_Client_LOG.txt"))
-                w.WriteLine("");
+            //using (StreamWriter w = File.CreateText(path + "UDP\\UDP_Client_LOG.txt"))
+            //    w.WriteLine("");
 
             startTimer.Start();
         }
@@ -297,8 +297,8 @@ namespace VLCPlayer
                 LoadView();
             }
 
-            using (StreamWriter w = File.CreateText(path + "RTMP\\RTMP_Client_LOG.txt"))
-                w.WriteLine("");
+            //using (StreamWriter w = File.CreateText(path + "RTMP\\RTMP_Client_LOG.txt"))
+            //    w.WriteLine("");
 
             startTimer.Start();
         }
@@ -326,8 +326,8 @@ namespace VLCPlayer
                 LoadView();
             }
 
-            using (StreamWriter w = File.CreateText(path + "RTSP\\RTSP_Client_LOG.txt"))
-                w.WriteLine("");
+            //using (StreamWriter w = File.CreateText(path + "RTSP\\RTSP_Client_LOG.txt"))
+            //    w.WriteLine("");
 
             startTimer.Start();
         }
@@ -354,8 +354,8 @@ namespace VLCPlayer
 
                 LoadView();
             }
-            using (StreamWriter w = File.CreateText(path + "SRT\\SRT_Client_LOG.txt"))
-                w.WriteLine("");
+            //using (StreamWriter w = File.CreateText(path + "SRT\\SRT_Client_LOG.txt"))
+            //    w.WriteLine("");
 
             startTimer.Start();
         }
