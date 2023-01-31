@@ -13,36 +13,40 @@ using System.Windows.Forms;
 
 namespace VLCPlayer
 {
-    public partial class CascadeView : Form
+    
+    public partial class NormalView : Form
     {
-        private NormalView callingForm = null;
+        private CascadeView callingForm = null;
 
         const string path = "C:\\Work\\Studia\\inz\\Dane\\";
 
-        const string TCP_URL = "tcp://127.0.0.1:333";
-        const string UDP_URL = "udp://@127.0.0.1:333";
+        const string TCP_URL = "tcp://127.0.0.1:3333";
+        const string UDP_URL = "udp://@127.0.0.1:3333?pkt_size=1024";
         const string RTSP_URL = "rtsp://127.0.0.1:8554/mystream";
-        const string RTMP_URL = "rtmp://127.0.0.1:333";
-        const string SRT_URL = "srt://127.0.0.1:333";
+        const string RTMP_URL = "rtmp://127.0.0.1:3333";
+        const string SRT_URL = "srt://127.0.0.1:3333";
 
         LibVLC _libVLC;
-        MediaPlayer _mp, _mp2, _mp3, _mp4, _mp5, _mp6, _mp7, _mp8, _mp9;
+        MediaPlayer _mp;
 
         public System.Windows.Forms.Timer startTimer = new System.Windows.Forms.Timer();
         public System.Windows.Forms.Timer playTimer = new System.Windows.Forms.Timer();
 
-        Stopwatch stopWatch = new Stopwatch();
-
         public Media media;
 
         protocol protocol = protocol.none;
-        public CascadeView()
+
+        public NormalView(CascadeView callingForm):this()
+        {
+            this.callingForm = callingForm;
+        }
+
+        public NormalView()
         {
             InitializeComponent();
-            Core.Initialize();
 
-            cascadeToolStripMenuItem1.Checked = true;
-            fullToolStripMenuItem1.Checked = false;
+            fullToolStripMenuItem1.Checked = true;
+            cascadeToolStripMenuItem1.Checked = false;
 
             startTimer.Interval = 1000;
             startTimer.Tick += new EventHandler(StartTimerTick);
@@ -51,12 +55,10 @@ namespace VLCPlayer
 
             _libVLC = new LibVLC();
 
-            LoadView();
-        }
+            _mp = new MediaPlayer(_libVLC);
+            _mp.TimeChanged += mpTimeChanged;
 
-        public CascadeView(NormalView callingForm) : this()
-        {
-            this.callingForm = callingForm;
+            videoView1.MediaPlayer = _mp;
         }
 
         void PlayTimerTick(object sender, EventArgs e)
@@ -105,7 +107,7 @@ namespace VLCPlayer
                     break;
             }
 
-
+            
         }
 
         void StartTimerTick(object sender, EventArgs e)
@@ -115,31 +117,31 @@ namespace VLCPlayer
                 switch (protocol)
                 {
                     case protocol.tpc:
-                        PlayStream(TCP_URL);
+                        PlayURI(TCP_URL);
                         break;
                     case protocol.udp:
-                        PlayStream(UDP_URL);
+                        PlayURI(UDP_URL);
                         break;
                     case protocol.rtsp:
-                        PlayStream(RTSP_URL);
+                        PlayURI(RTSP_URL);
                         break;
                     case protocol.rtmp:
-                        PlayStream(RTMP_URL);
+                        PlayURI(RTMP_URL);
                         break;
                     case protocol.srt:
-                        PlayStream(SRT_URL);
+                        PlayURI(SRT_URL);
                         break;
                     case protocol.none:
                         break;
                 }
             }
+
             if (_mp.State == VLCState.Playing)
             {
                 this.UseWaitCursor = false;
                 playTimer.Start();
                 startTimer.Stop();
                 startTimer.Enabled = false;
-                stopWatch.Start();
             }
         }
 
@@ -148,62 +150,15 @@ namespace VLCPlayer
             textBox1.Invoke(new Action(delegate ()
             {
                 textBox1.Text = (TimeSpan.FromMilliseconds(_mp.Time).ToString());
-                textBox2.Text = (TimeSpan.FromMilliseconds(_mp2.Time).ToString());
-                textBox3.Text = (TimeSpan.FromMilliseconds(_mp3.Time).ToString());
-                textBox4.Text = (TimeSpan.FromMilliseconds(_mp4.Time).ToString());
-                textBox5.Text = (TimeSpan.FromMilliseconds(_mp5.Time).ToString());
-                textBox6.Text = (TimeSpan.FromMilliseconds(_mp6.Time).ToString());
-                textBox7.Text = (TimeSpan.FromMilliseconds(_mp7.Time).ToString());
-                textBox8.Text = (TimeSpan.FromMilliseconds(_mp8.Time).ToString());
-                textBox9.Text = (TimeSpan.FromMilliseconds(_mp9.Time).ToString());
             }));
         }
 
-        void PlayStream(string file)
+        bool PlayURI(string file)
         {
-            _mp.Play(new Media(_libVLC, new Uri(file + "0")));
-            _mp2.Play(new Media(_libVLC, new Uri(file + "1")));
-            _mp3.Play(new Media(_libVLC, new Uri(file + "2")));
-            _mp4.Play(new Media(_libVLC, new Uri(file + "3")));
-            _mp5.Play(new Media(_libVLC, new Uri(file + "4")));
-            _mp6.Play(new Media(_libVLC, new Uri(file + "5")));
-            _mp7.Play(new Media(_libVLC, new Uri(file + "6")));
-            _mp8.Play(new Media(_libVLC, new Uri(file + "7")));
-            _mp9.Play(new Media(_libVLC, new Uri(file + "8")));
+            return _mp.Play(new Media(_libVLC, new Uri(file)));
         }
 
-        private void CascadeView_FormClosing(object sender, FormClosingEventArgs e)
-        {
-            if (this.callingForm != null)
-                this.callingForm.Close();
-        }
-
-        void LoadView()
-        {
-            _mp = new MediaPlayer(_libVLC);
-            _mp2 = new MediaPlayer(_libVLC);
-            _mp3 = new MediaPlayer(_libVLC);
-            _mp4 = new MediaPlayer(_libVLC);
-            _mp5 = new MediaPlayer(_libVLC);
-            _mp6 = new MediaPlayer(_libVLC);
-            _mp7 = new MediaPlayer(_libVLC);
-            _mp8 = new MediaPlayer(_libVLC);
-            _mp9 = new MediaPlayer(_libVLC);
-
-            _mp.TimeChanged += mpTimeChanged;
-
-            videoView1.MediaPlayer = _mp;
-            videoView2.MediaPlayer = _mp2;
-            videoView3.MediaPlayer = _mp3;
-            videoView4.MediaPlayer = _mp4;
-            videoView5.MediaPlayer = _mp5;
-            videoView6.MediaPlayer = _mp6;
-            videoView7.MediaPlayer = _mp7;
-            videoView8.MediaPlayer = _mp8;
-            videoView9.MediaPlayer = _mp9;
-        }
-
-        private void tCPToolStripMenuItem_Click(object sender, EventArgs e)
+        private void tcpToolStripMenuItem_Click(object sender, EventArgs e)
         {
             if (protocol == protocol.tpc)
                 return;
@@ -214,16 +169,9 @@ namespace VLCPlayer
             if (_mp != null)
             {
                 _mp.Dispose();
-                _mp2.Dispose();
-                _mp3.Dispose();
-                _mp4.Dispose(); 
-                _mp5.Dispose();
-                _mp6.Dispose();
-                _mp7.Dispose();
-                _mp8.Dispose();
-                _mp9.Dispose();
-
-                LoadView();
+                _mp = new MediaPlayer(_libVLC);
+                _mp.TimeChanged += mpTimeChanged;
+                videoView1.MediaPlayer = _mp;
             }
 
             using (StreamWriter w = File.CreateText(path + "TCP\\TCP_Client_LOG.txt"))
@@ -239,20 +187,12 @@ namespace VLCPlayer
             protocol = protocol.udp;
             this.UseWaitCursor = true;
 
-
             if (_mp != null)
             {
                 _mp.Dispose();
-                _mp2.Dispose();
-                _mp3.Dispose();
-                _mp4.Dispose();
-                _mp5.Dispose();
-                _mp6.Dispose();
-                _mp7.Dispose();
-                _mp8.Dispose();
-                _mp9.Dispose();
-
-                LoadView();
+                _mp = new MediaPlayer(_libVLC);
+                _mp.TimeChanged += mpTimeChanged;
+                videoView1.MediaPlayer = _mp;
             }
 
             using (StreamWriter w = File.CreateText(path + "UDP\\UDP_Client_LOG.txt"))
@@ -261,27 +201,19 @@ namespace VLCPlayer
             startTimer.Start();
         }
 
-        private void rTMPToolStripMenuItem_Click(object sender, EventArgs e)
+        private void rTMPToolStripMenuItem_Click_1(object sender, EventArgs e)
         {
             if (protocol == protocol.rtmp)
                 return;
             protocol = protocol.rtmp;
             this.UseWaitCursor = true;
 
-
             if (_mp != null)
             {
                 _mp.Dispose();
-                _mp2.Dispose();
-                _mp3.Dispose();
-                _mp4.Dispose();
-                _mp5.Dispose();
-                _mp6.Dispose();
-                _mp7.Dispose();
-                _mp8.Dispose();
-                _mp9.Dispose();
-
-                LoadView();
+                _mp = new MediaPlayer(_libVLC);
+                _mp.TimeChanged += mpTimeChanged;
+                videoView1.MediaPlayer = _mp;
             }
 
             using (StreamWriter w = File.CreateText(path + "RTMP\\RTMP_Client_LOG.txt"))
@@ -292,25 +224,18 @@ namespace VLCPlayer
 
         private void rTSPToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            Cursor.Current = Cursors.WaitCursor;
             if (protocol == protocol.rtsp)
                 return;
             protocol = protocol.rtsp;
             this.UseWaitCursor = true;
 
-
             if (_mp != null)
             {
                 _mp.Dispose();
-                _mp2.Dispose();
-                _mp3.Dispose();
-                _mp4.Dispose();
-                _mp5.Dispose();
-                _mp6.Dispose();
-                _mp7.Dispose();
-                _mp8.Dispose();
-                _mp9.Dispose();
-
-                LoadView();
+                _mp = new MediaPlayer(_libVLC);
+                _mp.TimeChanged += mpTimeChanged;
+                videoView1.MediaPlayer = _mp;
             }
 
             using (StreamWriter w = File.CreateText(path + "RTSP\\RTSP_Client_LOG.txt"))
@@ -326,56 +251,43 @@ namespace VLCPlayer
             protocol = protocol.srt;
             this.UseWaitCursor = true;
 
-
             if (_mp != null)
             {
                 _mp.Dispose();
-                _mp2.Dispose();
-                _mp3.Dispose();
-                _mp4.Dispose();
-                _mp5.Dispose();
-                _mp6.Dispose();
-                _mp7.Dispose();
-                _mp8.Dispose();
-                _mp9.Dispose();
-
-                LoadView();
+                _mp = new MediaPlayer(_libVLC);
+                _mp.TimeChanged += mpTimeChanged;
+                videoView1.MediaPlayer = _mp;
             }
+
             using (StreamWriter w = File.CreateText(path + "SRT\\SRT_Client_LOG.txt"))
                 w.WriteLine("");
 
             startTimer.Start();
         }
 
-        private void cascadeToolStripMenuItem1_Click(object sender, EventArgs e)
+        private void fullToolStripMenuItem1_Click(object sender, EventArgs e)
         {
             return;
         }
 
-        private void fullToolStripMenuItem1_Click(object sender, EventArgs e)
+        private void cascadeToolStripMenuItem1_Click(object sender, EventArgs e)
         {
             if (_mp != null)
-            {
                 _mp.Dispose();
-                _mp2.Dispose();
-                _mp3.Dispose();
-                _mp4.Dispose();
-                _mp5.Dispose();
-                _mp6.Dispose();
-                _mp7.Dispose();
-                _mp8.Dispose();
-                _mp9.Dispose();
-            }
             startTimer.Enabled = false;
             playTimer.Enabled = false;
             startTimer.Dispose();
             playTimer.Dispose();
 
-            NormalView fullView = new NormalView(this);
-            fullView.Show();
+            CascadeView cascadeView = new CascadeView(this);
+            cascadeView.Show();
             this.Hide();
         }
+
+        private void Form2_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            if (this.callingForm != null)
+                this.callingForm.Close();
+        }
     }
-
-
 }

@@ -5,7 +5,7 @@ from numpy import datetime_data
 from openpyxl import load_workbook
 import pandas as pd
 
-path = 'C:\Work\Studia\inz\Server/inz_dane.xlsx'
+path = 'C:\Work\Studia\inz\Server/Dane.xlsx'
 out = 'C:\Work\Studia\inz\Server/wykres.xlsx'
 book = load_workbook(path)
 prot = ''
@@ -26,7 +26,7 @@ def write(arg):
             print ("Invalid Protocol: " + arg)
             return
     
-    data = pd.read_excel(path, prot + '_Cascade')
+    data = pd.read_excel(path, prot + '_Transcode')
     df = pd.DataFrame(data, columns= ['Godzina_s', 'Godzina_k', 'Czas_s', 'Czas_k'])[:1195]
 
     s_i = []
